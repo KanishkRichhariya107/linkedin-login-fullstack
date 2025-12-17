@@ -1,0 +1,10 @@
+{
+  "name": "linkedin-login-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-api": "cd api && npm install",
+    "install-frontend": "cd Frontend && npm install",
+    "build": "npm run install-api && npm run install-frontend && cd Frontend && npm run build"
+  }
+}
