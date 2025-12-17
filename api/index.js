@@ -21,4 +21,5 @@ app.get("/api", (req, res) => {
   res.send("Backend running on Vercel 🚀");
 });
 
+// Export for Vercel serverless
 module.exports = app;
