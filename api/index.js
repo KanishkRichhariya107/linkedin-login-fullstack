@@ -68,24 +68,25 @@ app.get("/api/auth/linkedin/callback", async (req, res) => {
       }
     );
 
-    const { name, email } = userRes.data;
+    const { name, email, picture } = userRes.data;
 
     const result = await pool.query(
       `
-      INSERT INTO users (full_name, email, signup_type)
-      VALUES ($1, $2, 'linkedin')
+      INSERT INTO users (full_name, email, signup_type, profile_picture)
+      VALUES ($1, $2, 'linkedin', $3)
       ON CONFLICT (email) DO UPDATE
-      SET full_name = EXCLUDED.full_name
+      SET full_name = EXCLUDED.full_name,
+          profile_picture = EXCLUDED.profile_picture
       RETURNING *;
       `,
-      [name, email]
+      [name, email, picture || null]
     );
 
     const user = result.rows[0];
 
     // Redirect to frontend
     res.redirect(
-      `${process.env.FRONTEND_URL}/home?name=${encodeURIComponent(user.full_name)}&email=${encodeURIComponent(user.email)}`
+      `${process.env.FRONTEND_URL}/home?name=${encodeURIComponent(user.full_name)}&email=${encodeURIComponent(user.email)}&picture=${encodeURIComponent(picture || '')}`
     );
 
   } catch (err) {
