@@ -68,6 +68,7 @@ app.get("/api/auth/linkedin/callback", async (req, res) => {
       }
     );
 
+    console.log("LinkedIn user data:", userRes.data);
     const { name, email, picture } = userRes.data;
 
     const result = await pool.query(
