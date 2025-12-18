@@ -95,12 +95,16 @@ export default function Home() {
     return name[0].toUpperCase();
   };
 
+  const proxiedImageUrl = picture 
+    ? `https://linkedin-login-fullstack.vercel.app/api/proxy-image?url=${encodeURIComponent(picture)}`
+    : null;
+
   return (
     <Container>
       <Card>
-        {picture && !imageError ? (
+        {proxiedImageUrl && !imageError ? (
           <ProfilePicture 
-            src={picture} 
+            src={proxiedImageUrl} 
             alt="Profile" 
             onError={() => setImageError(true)}
           />

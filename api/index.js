@@ -96,5 +96,30 @@ app.get("/api/auth/linkedin/callback", async (req, res) => {
   }
 });
 
+/* Proxy endpoint for LinkedIn profile pictures */
+app.get("/api/proxy-image", async (req, res) => {
+  const { url } = req.query;
+  
+  if (!url) {
+    return res.status(400).send("Missing image URL");
+  }
+
+  try {
+    const response = await axios.get(url, {
+      responseType: 'arraybuffer',
+      headers: {
+        'User-Agent': 'Mozilla/5.0'
+      }
+    });
+
+    res.set('Content-Type', response.headers['content-type']);
+    res.set('Cache-Control', 'public, max-age=86400'); // Cache for 1 day
+    res.send(response.data);
+  } catch (err) {
+    console.error("Image proxy error:", err);
+    res.status(500).send("Failed to fetch image");
+  }
+});
+
 // Export for Vercel serverless
 module.exports = app;
