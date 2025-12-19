@@ -72,7 +72,7 @@ linkedin-login-fullstack/
 └── README.md                 # This file
 ```
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -147,7 +147,7 @@ cd Frontend
 npm run dev
 ```
 
-## 🌐 Deployment
+##  Deployment
 
 ### Deploy to Vercel
 
@@ -172,7 +172,7 @@ npm run dev
 
 5. Redeploy after adding environment variables
 
-## 📊 Database Schema
+##  Database Schema
 
 ```sql
 CREATE TABLE users (
@@ -200,7 +200,7 @@ CREATE TABLE users (
 9. **Dashboard** → User redirected to home page with profile data
 10. **Logout** → User can logout and return to login page
 
-## 📚 Official Documentation
+##  Official Documentation
 
 ### LinkedIn OAuth
 - **LinkedIn Developers Portal:** https://www.linkedin.com/developers/apps
@@ -247,7 +247,7 @@ CREATE TABLE users (
 | `FRONTEND_URL` | Frontend application URL | `https://app.vercel.app` |
 | `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host/db` |
 
-## 📝 Notes
+##  Notes
 
 - All LinkedIn OAuth scopes used: `openid`, `profile`, `email`
 - Profile pictures are proxied through backend to bypass LinkedIn's CORS policy
@@ -255,7 +255,7 @@ CREATE TABLE users (
 - Frontend uses React Router for client-side routing
 - Vercel serverless functions handle backend API
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 **Issue:** "redirect_uri does not match"
 - **Solution:** Ensure `LINKEDIN_REDIRECT_URI` in `.env` matches exactly what's in LinkedIn app settings
@@ -269,11 +269,11 @@ CREATE TABLE users (
 **Issue:** 404 on routes after deployment
 - **Solution:** `vercel.json` is configured for SPA routing. Ensure it's properly deployed.
 
-## 👨‍💻 Author
+##  Author
 
 **Kanishk Richhariya**
 - GitHub: [@KanishkRichhariya107](https://github.com/KanishkRichhariya107)
 
-## 📄 License
+##  License
 
 This project is open source and available for educational purposes.
